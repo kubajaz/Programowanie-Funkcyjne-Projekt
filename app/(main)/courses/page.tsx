@@ -1,7 +1,9 @@
-import { courses } from "@/app/data/languages";
+import { courses } from "@/app/data/courses";
 import { List } from "./list";
+import { userProgressData } from "@/app/data/userProgress";
 
 const CoursesPage = () => {
+
     return (
         <div className="h-full max-w-[912px] px-3 mx-autp">
             <h1 className="text-2xl font-bold text-neutral-700">
@@ -9,7 +11,7 @@ const CoursesPage = () => {
             </h1>
             <List
                 courses={courses}
-                activeCourseId={1}
+                activeCourseId={userProgressData?.activeCourseId}
             />
         </div>
     )

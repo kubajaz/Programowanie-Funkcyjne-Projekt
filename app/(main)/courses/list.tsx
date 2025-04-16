@@ -1,13 +1,23 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import { Card } from "./card";
+import { useTransition } from "react";
+
+type Course = {
+    id: string;
+    title: string;
+    imageSrc: string;
+};
 
 type Props = {
-    courses: any;
-    activeCourseId: number;
+    courses: Course[];
+    activeCourseId: string;
 };
 
 export const List = ({ courses, activeCourseId }: Props) => {
+    const router = useRouter();
+
     return (
         <div className="pt-6 grid grid-cols-2 lg:grid-cols-[repeat(auto-fill,minmax(210px,1fr))] gap-4">
             {courses.map((course) => (
@@ -16,7 +26,7 @@ export const List = ({ courses, activeCourseId }: Props) => {
                     id={course.id}
                     title={course.title}
                     imageSrc={course.imageSrc}
-                    onClick={() => { }}
+                    onClick={() => router.push("/learn")}
                     disabled={false}
                     active={course.id === activeCourseId}
                 />

@@ -1,7 +1,12 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div className="max-w-[988px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-4 gap-2">
       <div className="relative w-[240px] h-[240px] lg:w-[424px] lg:h-[424px] mb-8 lg:mb-0">
@@ -12,7 +17,7 @@ export default function Home() {
           Learn practice and master new skills with ChessEZ
         </h1>
         <div className="flex flex-col items-center gap-y-3 max-w-[330px] w-full">
-          <Button size={"lg"} variant={"secondary"} className="w-full">
+          <Button onClick={() => router.push("/learn")} size={"lg"} variant={"secondary"} className="w-full">
             GET STARTED
           </Button>
           <Button size={"lg"} variant={"primaryOutline"} className="w-full">
