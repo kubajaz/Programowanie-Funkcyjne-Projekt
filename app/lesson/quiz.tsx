@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import { Header } from "./header";
+
 type Props = {
     initialPercentage: number;
     initialHearts: number;
@@ -9,9 +12,17 @@ type Props = {
 };
 
 export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription }: Props) => {
-    return (
-        <div>
 
-        </div>
+    const [hearts, setHearts] = useState(initialHearts);
+    const [percentage, setPercentage] = useState(initialPercentage);
+
+    return (
+        <>
+            <Header
+                hearts={hearts}
+                percentage={percentage}
+                hasActiveSubscription={!!userSubscription?.isActive}
+            />
+        </>
     );
 };
