@@ -1,6 +1,6 @@
-import { courses } from "@/app/data/courses";
+import { courses } from "@/data/courses";
 import { List } from "./list";
-import { userProgressData } from "@/app/data/userProgress";
+import { userProgressData } from "@/data/userProgress";
 
 const CoursesPage = () => {
 

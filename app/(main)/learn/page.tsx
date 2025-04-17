@@ -3,15 +3,22 @@ import { StickyWrapper } from '@/components/sticky-wrapper'
 import React from 'react'
 import { Header } from './header'
 import { UserProgress } from '@/components/user-progress'
-import { userProgressData } from '@/app/data/userProgress'
+import { userProgressData } from '@/data/userProgress'
 import { redirect } from 'next/navigation'
-import { units } from '@/app/data/units'
+import { units } from '@/data/units'
+import { Unit } from './unit'
+import { courseProgress } from '@/data/courseProgress'
 
 const LearnPage = () => {
 
   if (!userProgressData || !userProgressData.activeCourseId) {
     redirect("/courses");
   }
+
+  if (!courseProgress) {
+    redirect("/courses");
+  }
+
   return (
     <div className='flex flex-row-reverse gap-[48px] px-6'>
       <StickyWrapper>
@@ -26,7 +33,15 @@ const LearnPage = () => {
         <Header title="Spanish" />
         {units.map((unit) => (
           <div key={unit.id} className='mb-10'>
-            {JSON.stringify(unit)}
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={courseProgress.activeLesson}
+              activeLessonPercentage={courseProgress.activeLesson.percentage}
+            />
           </div>
         ))}
       </FeedWrapper>
