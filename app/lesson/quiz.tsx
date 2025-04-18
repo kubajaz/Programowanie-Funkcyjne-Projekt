@@ -1,14 +1,15 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
-import { redirect } from "next/navigation";
-import { useAudio } from "react-use";
+import { redirect, useRouter } from "next/navigation";
+import { useAudio, useWindowSize } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
+import Confetti from "react-confetti";
 
 type Props = {
     initialPercentage: number;
@@ -19,10 +20,14 @@ type Props = {
 };
 
 export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription }: Props) => {
+    const router = useRouter();
+    const { width, height } = useWindowSize();
 
+    const [finishAudio, _f, finishControls] = useAudio({ src: "/trumpet.mp3" });
     const [correctAudio, _c, correctControls] = useAudio({ src: "/success.mp3" });
     const [incorrectAudio, _i, incorrectControls] = useAudio({ src: "/success.mp3" });
 
+    const [lessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHearts);
     const [percentage, setPercentage] = useState(initialPercentage);
     const [challenges] = useState(initialLessonChallenges);
@@ -36,6 +41,12 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
 
     const challenge = challenges[activeIndex];
     const options = challenge?.challengeOptions ?? [];
+
+    useEffect(() => {
+        if (!challenge) {
+            finishControls.play();
+        }
+    }, [challenge]);
 
     const onNext = () => {
         setActiveIndex((current) => current + 1);
@@ -82,6 +93,8 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
     if (!challenge) {
         return (
             <>
+                {finishAudio}
+                <Confetti recycle={false} numberOfPieces={500} tweenDuration={10000} width={width} height={height} />
                 <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
                     <Image
                         src="/green.png"
@@ -111,6 +124,11 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
                         />
                     </div>
                 </div>
+                <Footer
+                    lessonId={lessonId}
+                    status="completed"
+                    onCheck={() => router.push("/learn")}
+                />
             </>
         )
     }
@@ -119,8 +137,9 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
 
     return (
         <>
-            {incorrectAudio}
+            {finishAudio}
             {correctAudio}
+            {incorrectAudio}
             <Header
                 hearts={hearts}
                 percentage={percentage}
