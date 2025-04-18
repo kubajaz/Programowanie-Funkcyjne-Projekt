@@ -15,7 +15,7 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "SELECT",
+                        type: "ASSIST",
                         question: "Que significa 'a man'?",
                         order: 1,
                         challengeProgress: [],
