@@ -16,9 +16,35 @@ export const units = [
                         id: "1",
                         lessonId: "1",
                         type: "SELECT",
-                        question: "What is your name?",
+                        question: "Que significa 'a man'?",
                         order: 1,
                         challengeProgress: [],
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "el hombre",
+                                correct: true,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "la mujer",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "el robot",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
                     }
                 ],
                 completed: true,
@@ -36,6 +62,32 @@ export const units = [
                         question: "What is your name?",
                         order: 1,
                         challengeProgress: [],
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "el hombre",
+                                correct: true,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "la mujer",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "el robot",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
                     }
                 ],
                 completed: false,
@@ -53,6 +105,32 @@ export const units = [
                         question: "What is your name?",
                         order: 1,
                         challengeProgress: [],
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "el hombre",
+                                correct: true,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "la mujer",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "el robot",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
                     }
                 ],
                 completed: false,
@@ -70,6 +148,32 @@ export const units = [
                         question: "What is your name?",
                         order: 1,
                         challengeProgress: [],
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "el hombre",
+                                correct: true,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "la mujer",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "el robot",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
                     }
                 ],
                 completed: false,
@@ -87,6 +191,32 @@ export const units = [
                         question: "What is your name?",
                         order: 1,
                         challengeProgress: [],
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "el hombre",
+                                correct: true,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "la mujer",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "el robot",
+                                correct: false,
+                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
                     }
                 ],
                 completed: false,
