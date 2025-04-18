@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Loader } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react'
 

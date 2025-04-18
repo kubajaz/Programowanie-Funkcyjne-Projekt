@@ -1,4 +1,3 @@
-import { courseProgress } from "@/data/courseProgress";
 import { units } from "@/data/units";
 import { userProgressData } from "@/data/userProgress";
 import { redirect } from "next/navigation";

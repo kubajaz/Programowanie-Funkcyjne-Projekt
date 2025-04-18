@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { Card } from "./card";
-import { useTransition } from "react";
 
 type Course = {
     id: string;
