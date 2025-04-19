@@ -2,7 +2,7 @@ export const units = [
     {
         id: "1",
         title: "Unit 1",
-        description: "Learn the basics of Spanish.",
+        description: "Memorize board",
         courseId: "1",
         order: 1,
         lessons: [
@@ -10,13 +10,13 @@ export const units = [
                 id: "1",
                 unitId: "1",
                 order: 1,
-                title: "Verbs",
+                title: "Guessing fields",
                 challenges: [
                     {
                         id: "1",
                         lessonId: "1",
                         type: "ASSIST",
-                        question: "Que significa 'a man'?",
+                        question: "What is this field?",
                         order: 1,
                         challengeProgress: [],
                         challengeOptions: [
@@ -47,7 +47,7 @@ export const units = [
                         ]
                     }
                 ],
-                completed: true,
+                completed: false,
             },
             {
                 id: "2",

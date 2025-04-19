@@ -30,7 +30,7 @@ const LearnPage = () => {
         />
       </StickyWrapper>
       <FeedWrapper>
-        <Header title="Spanish" />
+        <Header title={userProgressData.activeCourse.title} />
         {units.map((unit) => (
           <div key={unit.id} className='mb-10'>
             <Unit

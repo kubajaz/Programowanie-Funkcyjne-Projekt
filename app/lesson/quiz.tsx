@@ -97,14 +97,14 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
                 <Confetti recycle={false} numberOfPieces={500} tweenDuration={10000} width={width} height={height} />
                 <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
                     <Image
-                        src="/green.png"
+                        src="/confetti.svg"
                         alt="Finish"
                         className="hidden lg:block"
                         height={100}
                         width={100}
                     />
                     <Image
-                        src="/green.png"
+                        src="/confetti.svg"
                         alt="Finish"
                         className="block lg:hidden"
                         height={50}

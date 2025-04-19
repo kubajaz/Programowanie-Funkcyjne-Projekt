@@ -7,24 +7,20 @@ export const Footer = () => {
         <footer className='hidden lg:block h-20 w-full border-t-2 border-slate-200 p-2'>
             <div className='max-w-screen-lg mx-auto flex items-center justify-evenly h-full'>
                 <Button size={"lg"} variant={"ghost"}>
-                    <Image src={"/green.png"} alt='Croatian' height={32} width={40} className='mr-4 rounded-md' />
-                    Croatian
+                    <Image src={"/chess-checkmates.svg"} alt='Checkmates' height={32} width={40} className='mr-4 rounded-xs' />
+                    Checkmates
                 </Button>
                 <Button size={"lg"} variant={"ghost"}>
-                    <Image src={"/green.png"} alt='Spanish' height={32} width={40} className='mr-4 rounded-md' />
-                    Spanish
+                    <Image src={"/chess-positional.svg"} alt='Positional' height={32} width={40} className='mr-4 rounded-xs' />
+                    Positional
                 </Button>
                 <Button size={"lg"} variant={"ghost"}>
-                    <Image src={"/green.png"} alt='French' height={32} width={40} className='mr-4 rounded-md' />
-                    French
+                    <Image src={"/chess-tactics.svg"} alt='Tactics' height={32} width={40} className='mr-4 rounded-xs' />
+                    Tactics
                 </Button>
                 <Button size={"lg"} variant={"ghost"}>
-                    <Image src={"/green.png"} alt='Italian' height={32} width={40} className='mr-4 rounded-md' />
-                    Italian
-                </Button>
-                <Button size={"lg"} variant={"ghost"}>
-                    <Image src={"/green.png"} alt='Japanese' height={32} width={40} className='mr-4 rounded-md' />
-                    Japanese
+                    <Image src={"/chess-memorize.svg"} alt='Memorize' height={32} width={40} className='mr-4 rounded-xs' />
+                    Memorize
                 </Button>
             </div>
         </footer>

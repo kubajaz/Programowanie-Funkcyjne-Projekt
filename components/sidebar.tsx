@@ -14,20 +14,20 @@ export const Sidebar = ({ className }: Props) => {
             className)}>
             <Link href={"/learn"}>
                 <div className='pt-8 pl-4 pb-7 flex items-center gap-x-3'>
-                    <Image src={"/green.png"} height={40} width={40} alt='GreenBody' />
+                    <Image src={"/knight.svg"} height={40} width={40} alt='GreenBody' />
                     <h1 className='text-2xl font-extrabold text-green-600 tracking-wide'>
                         ChessEZ
                     </h1>
                 </div>
             </Link>
             <div className="flex flex-col gap-y-2 flex-1">
-                <SidebarItem label="learn" href="/learn" iconSrc={"/green.png"} />
-                <SidebarItem label="leaderbord" href="/leaderboard" iconSrc={"/green.png"} />
-                <SidebarItem label="quests" href="/quests" iconSrc={"/green.png"} />
-                <SidebarItem label="shop" href="/shop" iconSrc={"/green.png"} />
+                <SidebarItem label="learn" href="/learn" iconSrc={"/learn.svg"} />
+                <SidebarItem label="leaderbord" href="/leaderboard" iconSrc={"/leaderboard.svg"} />
+                <SidebarItem label="theory" href="/theory" iconSrc={"/theory.svg"} />
+                {/* <SidebarItem label="shop" href="/shop" iconSrc={"/green.png"} /> */}
             </div>
             <div className="p-4">
-                <SidebarItem label="shop" href="/shop" iconSrc={"/green.png"} />
+                <SidebarItem label="Login" href="/login" iconSrc={"/green.png"} />
             </div>
         </div>
     );

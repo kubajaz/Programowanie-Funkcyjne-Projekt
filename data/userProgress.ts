@@ -6,7 +6,7 @@ export const userProgressData = {
     points: 0,
     activeCourse: {
         "id": "2",
-        "title": "French",
-        "imageSrc": "/green.png"
+        "title": "Positional",
+        "imageSrc": "/chess-positional.svg"
     },
 };

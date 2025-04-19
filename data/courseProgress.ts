@@ -1,6 +1,6 @@
 export const courseProgress = {
     activeLesson: {
-        id: "2",
+        id: "1",
         unitId: "1",
         order: 1,
         title: "Verbs",

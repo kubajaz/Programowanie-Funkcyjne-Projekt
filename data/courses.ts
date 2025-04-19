@@ -1,22 +1,22 @@
 export const courses = [
     {
         "id": "1",
-        "title": "Spanish",
-        "imageSrc": "/green.png"
+        "title": "Checkmates",
+        "imageSrc": "/chess-checkmates.svg"
     },
     {
         "id": "2",
-        "title": "French",
-        "imageSrc": "/green.png"
+        "title": "Positional",
+        "imageSrc": "/chess-positional.svg"
     },
     {
         "id": "3",
-        "title": "Croatian",
-        "imageSrc": "/green.png"
+        "title": "Tactics",
+        "imageSrc": "/chess-tactics.svg"
     },
     {
         "id": "4",
-        "title": "Italian",
-        "imageSrc": "/green.png"
+        "title": "Memorize",
+        "imageSrc": "/chess-memorize.svg"
     }
 ]
