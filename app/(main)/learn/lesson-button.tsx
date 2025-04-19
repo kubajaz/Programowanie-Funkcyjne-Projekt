@@ -54,7 +54,7 @@ export const LessonButton = ({ id, index, totalCount, locked, current, percentag
                 {
                     current ? (
                         <div className="h-[102px] w-[102px] relative">
-                            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold text-green-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
+                            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold text-yellow-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
                                 Start
                                 <div
                                     className="absolute left-1/2 -bottom-2 w-0 h-0 border-x-8 border-x-transparent border-t-8 trasnform -translate-x-1/2"
@@ -64,7 +64,7 @@ export const LessonButton = ({ id, index, totalCount, locked, current, percentag
                                 value={Number.isNaN(percentage) ? 0 : percentage}
                                 styles={{
                                     path: {
-                                        stroke: "#4ade80",
+                                        stroke: "#d18f00",
                                     },
                                     trail: {
                                         stroke: "#e5e7eb"

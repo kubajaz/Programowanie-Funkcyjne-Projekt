@@ -5,7 +5,7 @@ import { userProgressData } from "@/data/userProgress";
 const CoursesPage = () => {
 
     return (
-        <div className="h-full max-w-[912px] px-3 mx-autp">
+        <div className="h-full max-w-[912px] px-3 mx-auto">
             <h1 className="text-2xl font-bold text-neutral-700">
                 Chess Topics
             </h1>
@@ -13,6 +13,7 @@ const CoursesPage = () => {
                 courses={courses}
                 activeCourseId={userProgressData?.activeCourseId}
             />
+            <div className="h-6"/>
         </div>
     )
 }

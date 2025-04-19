@@ -8,7 +8,7 @@ export const Header = () => {
       <div className='lg:max-w-screen-lg mx-auto flex items-center justify-between h-full'>
         <div className='pt-8 pl-4 pb-7 flex items-center gap-x-3'>
           <Image src={"/knight.svg"} height={40} width={40} alt='GreenBody' />
-          <h1 className='text-2xl font-extrabold text-green-600 tracking-wide'>
+          <h1 className='text-2xl font-extrabold text-yellow-600 tracking-wide'>
             ChessEZ
           </h1>
         </div>
