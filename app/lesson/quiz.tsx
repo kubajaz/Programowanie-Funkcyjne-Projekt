@@ -133,8 +133,6 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
         )
     }
 
-    const title = challenge.type === "ASSIST" ? "Select the correct meaning" : challenge.question;
-
     return (
         <>
             {finishAudio}
@@ -147,14 +145,24 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
             />
             <div className="flex-1">
                 <div className="h-full flex items-center justify-center">
-                    <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
-                        <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
-                            {title}
-                        </h1>
-                        <div>
-                            {challenge.type === "ASSIST" && (
+                    <div className="sm:min-h-[350px] sm:w-[600px] w-full px-6 sm:px-0 flex flex-col gap-y-12">
+                        <div className="flex flex-col sm:flex-row items-start gap-4">
+                            <div className="w-full max-w-[200px] order-1 sm:order-2 mx-auto sm:mx-0">
+                                <Image
+                                    src={challenge.imageSrc}
+                                    alt="ChessBoard"
+                                    width={200}
+                                    height={200}
+                                    className="w-full h-auto rounded-sm shadow-md"
+                                    unoptimized
+                                />
+                            </div>
+
+                            <div className="order-2 sm:order-1 flex-1">
                                 <QuestionBubble question={challenge.question} />
-                            )}
+                            </div>
+                        </div>
+                        <div>
                             <Challenge
                                 options={options}
                                 onSelect={onSelect}

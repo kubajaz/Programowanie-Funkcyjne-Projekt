@@ -15,33 +15,59 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "ASSIST",
                         question: "What is this field?",
+                        imageSrc: "/q11.png",
                         order: 1,
-                        challengeProgress: [],
                         challengeOptions: [
                             {
                                 id: "1",
                                 challengeId: "1",
-                                text: "el hombre",
-                                correct: true,
-                                imageSrc: "/green.png",
+                                text: "D4",
+                                correct: false,
                                 audioSrc: "/success.mp3"
                             },
                             {
                                 id: "2",
                                 challengeId: "1",
-                                text: "la mujer",
-                                correct: false,
-                                imageSrc: "/green.png",
+                                text: "E4",
+                                correct: true,
                                 audioSrc: "/success.mp3"
                             },
                             {
                                 id: "3",
                                 challengeId: "1",
-                                text: "el robot",
+                                text: "C5",
                                 correct: false,
-                                imageSrc: "/green.png",
+                                audioSrc: "/success.mp3"
+                            }
+                        ]
+                    },
+                    {
+                        id: "2",
+                        lessonId: "1",
+                        question: "Where is the King?",
+                        imageSrc: "/q12.png",
+                        order: 1,
+                        challengeOptions: [
+                            {
+                                id: "1",
+                                challengeId: "1",
+                                text: "C8",
+                                correct: false,
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "2",
+                                challengeId: "1",
+                                text: "H6",
+                                correct: false,
+                                audioSrc: "/success.mp3"
+                            },
+                            {
+                                id: "3",
+                                challengeId: "1",
+                                text: "A3",
+                                correct: true,
                                 audioSrc: "/success.mp3"
                             }
                         ]
@@ -58,17 +84,15 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "SELECT",
                         question: "What is your name?",
+                        imageSrc: "",
                         order: 1,
-                        challengeProgress: [],
                         challengeOptions: [
                             {
                                 id: "1",
                                 challengeId: "1",
                                 text: "el hombre",
                                 correct: true,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -76,7 +100,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "la mujer",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -84,7 +107,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "el robot",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             }
                         ]
@@ -101,17 +123,15 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "SELECT",
                         question: "What is your name?",
+                        imageSrc: "",
                         order: 1,
-                        challengeProgress: [],
                         challengeOptions: [
                             {
                                 id: "1",
                                 challengeId: "1",
                                 text: "el hombre",
                                 correct: true,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -119,7 +139,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "la mujer",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -127,7 +146,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "el robot",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             }
                         ]
@@ -144,17 +162,14 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "SELECT",
                         question: "What is your name?",
                         order: 1,
-                        challengeProgress: [],
                         challengeOptions: [
                             {
                                 id: "1",
                                 challengeId: "1",
                                 text: "el hombre",
                                 correct: true,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -162,7 +177,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "la mujer",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -170,7 +184,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "el robot",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             }
                         ]
@@ -187,17 +200,14 @@ export const units = [
                     {
                         id: "1",
                         lessonId: "1",
-                        type: "SELECT",
                         question: "What is your name?",
                         order: 1,
-                        challengeProgress: [],
                         challengeOptions: [
                             {
                                 id: "1",
                                 challengeId: "1",
                                 text: "el hombre",
                                 correct: true,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -205,7 +215,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "la mujer",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             },
                             {
@@ -213,7 +222,6 @@ export const units = [
                                 challengeId: "1",
                                 text: "el robot",
                                 correct: false,
-                                imageSrc: "/green.png",
                                 audioSrc: "/success.mp3"
                             }
                         ]

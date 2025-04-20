@@ -31,24 +31,17 @@ export const Card = ({ id, imageSrc, audioSrc, text, shortcut, selected, onClick
 
     return (
         <div onClick={handleClick} className={cn(
-            "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-4 lg:p-6 cursor-pointer active:border-b-2",
+            "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-4 cursor-pointer active:border-b-2 lg:p-3 w-full",
             selected && "border-yellow-500 bg-yellow-300 hover:bg-yellow-300",
             selected && status === "correct" && "border-yellow-300 bg-yellow-100 hover:bg-yellow-100",
             selected && status === "wrong" && "border-rose-300 bg-rose-100 hover:bg-rose-100",
             disabled && "pointer-events-none hover:bg-white",
-            type === "ASSIST" && "lg:p-3 w-full"
         )}>
             {audio}
-            {imageSrc && type === "SELECT" && (
-                <div className="relative aspect-square mb-4 max-h-[80px] lg:max-h-[150px] w-full flex justify-center items-center">
-                    <Image src={imageSrc} height={60} width={60} alt={text} />
-                </div>
-            )}
             <div className={cn(
-                "flex items-center justify-between",
-                type === "ASSIST" && "flex-row-reverse"
+                "flex flex-row-reverse items-center justify-between",
             )}>
-                {type === "ASSIST" && <div />}
+                <div />
                 <p className={cn(
                     "text-neutral-600 text-sm lg:text-base",
                     selected && "text-yellow-700",
