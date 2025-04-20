@@ -1,4 +1,5 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
+import { Info } from "@/components/info";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { userProgressData } from "@/data/userProgress";
@@ -41,6 +42,7 @@ const TheoryPage = () => {
                     points={userProgressData.points}
                     hasActiveSubscription={false}
                 />
+                <Info />
             </StickyWrapper>
 
             <FeedWrapper>
@@ -57,7 +59,7 @@ const TheoryPage = () => {
                         {theory.map((item) => (
                             <li
                                 key={item.title}
-                                className="flex flex-col lg:flex-row gap-6 items-center border rounded-xl p-6 bg-neutral-50 hover:bg-neutral-100 transition"
+                                className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-6 items-center border rounded-xl p-6 bg-neutral-50 hover:bg-neutral-100 transition"
                             >
                                 <div className="flex-shrink-0 w-full max-w-[200px]">
                                     <Image
@@ -65,11 +67,11 @@ const TheoryPage = () => {
                                         alt={item.title}
                                         width={200}
                                         height={200}
-                                        className="w-full h-auto rounded-lg shadow-sm"
+                                        className="w-full h-auto rounded-md shadow-sm"
                                         unoptimized
                                     />
                                 </div>
-                                <div className="flex flex-col gap-2 text-center lg:text-left">
+                                <div className="flex flex-col gap-2 text-center md:text-left">
                                     <h2 className="text-xl font-semibold text-neutral-800">
                                         {item.title}
                                     </h2>

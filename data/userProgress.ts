@@ -1,6 +1,6 @@
 export const userProgressData = {
     userName: "KubaJaz",
-    userImageSrc: "/green.png",
+    userImageSrc: "/knight.svg",
     activeCourseId: "2",
     hearts: 5,
     points: 0,

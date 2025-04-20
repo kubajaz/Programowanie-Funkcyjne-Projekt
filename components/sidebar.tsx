@@ -1,13 +1,19 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "./ui/button";
 
 type Props = {
     className?: string;
 };
 
 export const Sidebar = ({ className }: Props) => {
+    const { logOut } = useAuth();
+
     return (
         <div className={cn(
             "flex h-full lg:w-[256px] lg:fixed left-0 top-0 px-4 border-r-2 flex-col",
@@ -26,7 +32,9 @@ export const Sidebar = ({ className }: Props) => {
                 <SidebarItem label="theory" href="/theory" iconSrc={"/theory.svg"} />
             </div>
             <div className="p-4">
-                <SidebarItem label="Login" href="/login" iconSrc={"/green.png"} />
+                <Button variant="sidebarOutline" size="lg" onClick={() => {
+                    logOut();
+                }}>Log Out</Button>
             </div>
         </div>
     );

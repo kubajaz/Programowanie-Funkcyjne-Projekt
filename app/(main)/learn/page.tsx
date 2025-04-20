@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation'
 import { units } from '@/data/units'
 import { Unit } from './unit'
 import { courseProgress } from '@/data/courseProgress'
+import { Info } from '@/components/info'
 
 const LearnPage = () => {
 
@@ -28,6 +29,7 @@ const LearnPage = () => {
           points={userProgressData.points}
           hasActiveSubscription={false}
         />
+        <Info />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgressData.activeCourse.title} />

@@ -1,4 +1,5 @@
 import { FeedWrapper } from "@/components/feed-wrapper";
+import { Info } from "@/components/info";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -17,6 +18,7 @@ const LeaderBoardPage = () => {
                     points={userProgressData.points}
                     hasActiveSubscription={false}
                 />
+                <Info />
             </StickyWrapper>
             <FeedWrapper>
                 <div className="w-full flex flex-col items-center">
