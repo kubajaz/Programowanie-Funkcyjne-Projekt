@@ -24,15 +24,9 @@ const LearnPage = () => {
 
       try {
         const userData = await getUserByID(user.uid);
-        if (!userData?.courseID) {
-          //redirect("/courses");
-        }
         setUserData(userData);
 
         const course = await getCourseByID(userData.courseID);
-        if (!course) {
-          //redirect("/courses");
-        }
         setActiveCourse(course);
 
       } catch (error) {
