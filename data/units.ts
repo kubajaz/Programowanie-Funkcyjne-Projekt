@@ -112,7 +112,7 @@ export const units = [
                         ]
                     }
                 ],
-                completed: false,
+                completed: true,
             },
             {
                 id: "3",

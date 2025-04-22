@@ -14,7 +14,13 @@ import {
   signOut,
   User,
 } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { auth, db } from '../config/firebase';
+import {
+  doc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
 
 interface AuthContextType {
   user: User | null;
@@ -32,9 +38,35 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+
+        const userRef = doc(db, 'users', firebaseUser.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+          await setDoc(userRef, {
+            uid: firebaseUser.uid,
+            name: firebaseUser.displayName || '',
+            email: firebaseUser.email || '',
+            photoURL: firebaseUser.photoURL || '',
+            createdAt: serverTimestamp(),
+
+            points: 0,
+            hearts: 5,
+            courseID: '',
+            unitID: '',
+            lessonID: '',
+            challengeID: '',
+            percentage: 0,
+          });
+        }
+      } else {
+        setUser(null);
+      }
     });
+
     return () => unsubscribe();
   }, []);
 

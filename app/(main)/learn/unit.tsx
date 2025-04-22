@@ -12,7 +12,6 @@ type Props = {
 };
 
 export const Unit = ({ id, order, title, description, lessons, activeLesson, activeLessonPercentage }: Props) => {
-    console.log(id, order)
     return (
         <>
             <UnitBanner title={title} description={description} />
