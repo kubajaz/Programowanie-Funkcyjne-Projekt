@@ -1,21 +1,48 @@
+"use client";
+
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { Info } from "@/components/info";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { UserProgress } from "@/components/user-progress";
+import { useAuth } from "@/context/AuthContext";
 import { topUsers } from "@/data/topUsers";
-import { userProgressData } from "@/data/userProgress";
+import { getCourseByID } from "@/lib/db/getCourseByID";
+import { getUserByID } from "@/lib/db/getUserByID";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Loading from "../courses/loading";
 
 const LeaderBoardPage = () => {
+    const { user } = useAuth();
+    const [userData, setUserData] = useState<any>(null);
+    const [courseData, setCourseData] = useState<any>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userData = await getUserByID(user.uid);
+                setUserData(userData);
+                const courseData = await getCourseByID(userData.courseID);
+                setCourseData(courseData);
+            } catch (error) {
+                console.error("Failed to fetch courses:", error);
+            }
+        };
+
+        if (user.uid) fetchData();
+    }, [user]);
+
+    if (!courseData || !userData) return <Loading />;
+
     return (
         <div className="flex flex-row-reverse gap-[48px] px-6">
             <StickyWrapper>
                 <UserProgress
-                    activeCourse={userProgressData.activeCourse}
-                    hearts={userProgressData.hearts}
-                    points={userProgressData.points}
+                    activeCourse={courseData}
+                    hearts={userData.hearts}
+                    points={userData.points}
                     hasActiveSubscription={false}
                 />
                 <Info />

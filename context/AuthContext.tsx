@@ -56,9 +56,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
             points: 0,
             hearts: 5,
             courseID: '',
-            unitID: '',
-            lessonID: '',
-            challengeID: '',
+            unitID: '1',
+            lessonID: '1',
+            challengeID: '1',
             percentage: 0,
           });
         }
