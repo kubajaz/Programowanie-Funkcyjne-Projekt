@@ -7,9 +7,9 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { UserProgress } from "@/components/user-progress";
 import { useAuth } from "@/context/AuthContext";
-import { topUsers } from "@/data/topUsers";
 import { getCourseByID } from "@/lib/db/getCourseByID";
 import { getUserByID } from "@/lib/db/getUserByID";
+import { getTopUsers } from "@/lib/db/getTopUsers";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loading from "../courses/loading";
@@ -18,20 +18,28 @@ const LeaderBoardPage = () => {
     const { user } = useAuth();
     const [userData, setUserData] = useState<any>(null);
     const [courseData, setCourseData] = useState<any>(null);
+    const [topUsers, setTopUsers] = useState<any[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userData = await getUserByID(user.uid);
+                if (!user?.uid) return;
+
+                const [userData, courseData, users] = await Promise.all([
+                    getUserByID(user.uid),
+                    getCourseByID((await getUserByID(user.uid)).courseID),
+                    getTopUsers(),
+                ]);
+
                 setUserData(userData);
-                const courseData = await getCourseByID(userData.courseID);
                 setCourseData(courseData);
+                setTopUsers(users);
             } catch (error) {
-                console.error("Failed to fetch courses:", error);
+                console.error("Failed to fetch data:", error);
             }
         };
 
-        if (user.uid) fetchData();
+        fetchData();
     }, [user]);
 
     if (!courseData || !userData) return <Loading />;
@@ -68,7 +76,7 @@ const LeaderBoardPage = () => {
                             className="flex items-center w-full p-2 px-4 rounded-xl hover:bg-gray-200/50"
                         >
                             <p className="font-bold text-yellow-700 mr-4">{index + 1}</p>
-                            <Avatar className="border bg-yellow-500 h-12 w-12 ml-3 mr-6">
+                            <Avatar className="border h-12 w-12 ml-3 mr-6">
                                 <AvatarImage
                                     className="object-cover"
                                     src={userProgress.userImageSrc}
