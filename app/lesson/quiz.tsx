@@ -5,7 +5,7 @@ import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useAudio, useWindowSize } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
@@ -17,16 +17,20 @@ import { updateUserState } from "@/lib/db/updateUserState";
 
 type Props = {
     initialPercentage: number;
+    initialChallengeId: string;
     initialHearts: number;
     initialLessonId: string;
     initialLessonChallenges: any[];
     userSubscription: any;
 };
 
-export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription }: Props) => {
+export const Quiz = ({ initialPercentage, initialChallengeId, initialHearts, initialLessonId, initialLessonChallenges, userSubscription }: Props) => {
     const router = useRouter();
     const { user } = useAuth();
     const { width, height } = useWindowSize();
+
+    const params = useParams();
+    const isDynamicLessonPage = !!params.lessonId;
 
     const [finishAudio, _f, finishControls] = useAudio({ src: "/trumpet.mp3" });
     const [correctAudio, _c, correctControls] = useAudio({ src: "/success.mp3" });
@@ -36,10 +40,8 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
     const [hearts, setHearts] = useState(initialHearts);
     const [percentage, setPercentage] = useState(initialPercentage);
     const [challenges] = useState(initialLessonChallenges);
-    const [activeIndex, setActiveIndex] = useState(() => {
-        const uncompletedIndex = challenges.findIndex((challenge) => !challenge.completed);
-        return uncompletedIndex === -1 ? 0 : uncompletedIndex;
-    });
+    const [activeIndex, setActiveIndex] = useState(Number(initialChallengeId) - 1);
+    console.log(activeIndex)
 
     const [selectedOption, setSelectedOption] = useState<number>();
     const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
@@ -63,7 +65,7 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
         setSelectedOption(id);
     };
 
-    const onContinue = () => {
+    const onContinue = async () => {
         if (!selectedOption) return;
         if (status === "wrong") {
             setStatus("none");
@@ -79,17 +81,34 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
         }
 
         const correctOption = options.find((option: any) => option.correct);
+        const userData = await getUserByID(user.uid);
 
         if (correctOption && correctOption.id === selectedOption) {
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
-            if (initialPercentage === 100) {
-                setHearts((prev) => Math.min(prev + 1, 5))
+
+            let newChallengeID = activeIndex + 2;
+            if (activeIndex === challenges.length - 1) {
+                newChallengeID = 1;
             }
+
+            if (user && !isDynamicLessonPage) {
+                await updateUserState(user.uid, {
+                    challengeID: String(newChallengeID),
+                    percentage: percentage + 100 / challenges.length,
+                });
+                await updateUserProgress(user.uid, userData.points + 10, userData.hearts)
+            }
+
+            if (initialPercentage === 100) {
+                setHearts((prev) => Math.min(prev + 1, 5));
+            }
+
             correctControls.play();
         } else {
-            setStatus("wrong")
-            setHearts((prev) => Math.max(prev - 1, 0))
+            setStatus("wrong");
+            setHearts((prev) => Math.max(prev - 1, 0));
+            await updateUserProgress(user.uid, userData.points, Math.max(userData.hearts - 1, 0))
             incorrectControls.play();
         }
     };

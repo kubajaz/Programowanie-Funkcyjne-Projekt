@@ -49,7 +49,8 @@ const LessonPage = () => {
             initialLessonId={lesson.id}
             initialLessonChallenges={lesson.challenges}
             initialHearts={userData.hearts}
-            initialPercentage={60}
+            initialPercentage={0}
+            initialChallengeId={"1"}
             userSubscription={null}
         />
     );

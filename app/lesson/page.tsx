@@ -36,7 +36,8 @@ const LessonPage = () => {
             initialLessonId={lesson.id}
             initialLessonChallenges={lesson.challenges}
             initialHearts={userData.hearts}
-            initialPercentage={60}
+            initialPercentage={userData.percentage}
+            initialChallengeId={userData.challengeID}
             userSubscription={null}
         />
     );
