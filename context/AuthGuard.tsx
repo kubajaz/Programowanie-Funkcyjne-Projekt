@@ -2,27 +2,20 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const pathname = usePathname();
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!user && pathname !== '/') {
+        if (!loading && !user && pathname !== '/') {
             router.push('/');
-        } else {
-            setLoading(false);
         }
-    }, [user, pathname, router]);
+    }, [user, loading, pathname, router]);
 
     if (loading) return null;
 
-    return (
-        <>
-            {children}
-        </>
-    );
+    return <>{children}</>;
 }

@@ -5,11 +5,15 @@ import { Header } from "./header";
 import { QuestionBubble } from "./question-bubble";
 import { Challenge } from "./challenge";
 import { Footer } from "./footer";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useAudio, useWindowSize } from "react-use";
 import Image from "next/image";
 import { ResultCard } from "./result-card";
 import Confetti from "react-confetti";
+import { useAuth } from "@/context/AuthContext";
+import { updateUserProgress } from "@/lib/db/updateUserProgress";
+import { getUserByID } from "@/lib/db/getUserByID";
+import { updateUserState } from "@/lib/db/updateUserState";
 
 type Props = {
     initialPercentage: number;
@@ -21,6 +25,7 @@ type Props = {
 
 export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initialLessonChallenges, userSubscription }: Props) => {
     const router = useRouter();
+    const { user } = useAuth();
     const { width, height } = useWindowSize();
 
     const [finishAudio, _f, finishControls] = useAudio({ src: "/trumpet.mp3" });
@@ -82,7 +87,6 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
                 setHearts((prev) => Math.min(prev + 1, 5))
             }
             correctControls.play();
-            //redirect("/learn");
         } else {
             setStatus("wrong")
             setHearts((prev) => Math.max(prev - 1, 0))
@@ -127,7 +131,28 @@ export const Quiz = ({ initialPercentage, initialHearts, initialLessonId, initia
                 <Footer
                     lessonId={lessonId}
                     status="completed"
-                    onCheck={() => router.push("/learn")}
+                    onCheck={async () => {
+                        if (!user?.uid) return;
+
+                        try {
+                            const userData = await getUserByID(user.uid);
+                            const nextLessonId = String(Number(lessonId) + 1);
+
+                            await updateUserState(user.uid, {
+                                lessonID: nextLessonId,
+                                percentage: 0,
+                            });
+
+                            const newPoints = (userData.points || 0) + 10;
+                            const newHearts = hearts ?? 3;
+
+                            await updateUserProgress(user.uid, newPoints, newHearts);
+
+                            router.push("/learn");
+                        } catch (error) {
+                            console.error("Błąd przy aktualizacji lekcji:", error);
+                        }
+                    }}
                 />
             </>
         )

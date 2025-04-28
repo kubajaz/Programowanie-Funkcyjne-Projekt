@@ -24,6 +24,7 @@ import {
 
 interface AuthContextType {
   user: User | null;
+  loading: boolean; // Dodajemy loading
   signIn: () => Promise<void>;
   logOut: () => Promise<void>;
 }
@@ -36,6 +37,7 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -65,6 +67,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       } else {
         setUser(null);
       }
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -80,7 +83,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn, logOut }}>
+    <AuthContext.Provider value={{ user, loading, signIn, logOut }}>
       {children}
     </AuthContext.Provider>
   );
