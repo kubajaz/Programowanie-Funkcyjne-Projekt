@@ -23,9 +23,9 @@ export const Info = () => {
 
             <section className="space-y-2 mb-6">
                 <h3 className="text-lg font-semibold text-neutral-700">📞 Contact</h3>
-                <p className="text-neutral-600">Email: <span className="font-medium">chess@club.com</span></p>
+                <p className="text-neutral-600">Email: <span className="font-medium">klubcaissa@gmail.com</span></p>
                 <p className="text-neutral-600">Phone: <span className="font-medium">+48 123 456 789</span></p>
-                <p className="text-neutral-600">Location: <span className="font-medium">Warsaw, Nowowiejska 15</span></p>
+                <p className="text-neutral-600">Location: <span className="font-medium">Warsaw, Domaniewska 47</span></p>
             </section>
 
             <section className="space-y-2 mb-6">

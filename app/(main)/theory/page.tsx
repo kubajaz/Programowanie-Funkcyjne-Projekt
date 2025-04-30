@@ -16,25 +16,25 @@ const theory = [
         title: "What is a square on the chessboard?",
         description:
             "The chessboard has 64 squares, labeled with letters (a–h) horizontally and numbers (1–8) vertically. For example, e4 is a central square.",
-        imageSrc: "/q11.png",
+        imageSrc: "/1.png",
     },
     {
         title: "White and black squares",
         description:
             "Square colors alternate. The bottom-right square must always be white — this is essential for correctly setting up the board.",
-        imageSrc: "/q11.png",
+        imageSrc: "/2.png",
     },
     {
         title: "Recognizing diagonals",
         description:
             "Squares like c1 and h6 lie on the same diagonal. Training your mind to 'see' diagonals helps with understanding bishop and queen movement.",
-        imageSrc: "/q11.png",
+        imageSrc: "/3.png",
     },
     {
         title: "Navigating in your mind",
         description:
             "To play blindfold or visualize positions, practice moving pieces mentally. For example, imagine a pawn on d2 advancing to d4.",
-        imageSrc: "/q11.png",
+        imageSrc: "/4.png",
     },
 ];
 
@@ -94,7 +94,7 @@ const TheoryPage = () => {
                                         alt={item.title}
                                         width={200}
                                         height={200}
-                                        className="w-full h-auto rounded-md shadow-sm"
+                                        className="w-full h-auto rounded-sm shadow-sm"
                                         unoptimized
                                     />
                                 </div>

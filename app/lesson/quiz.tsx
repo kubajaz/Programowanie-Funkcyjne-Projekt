@@ -34,7 +34,7 @@ export const Quiz = ({ initialPercentage, initialChallengeId, initialHearts, ini
 
     const [finishAudio, _f, finishControls] = useAudio({ src: "/trumpet.mp3" });
     const [correctAudio, _c, correctControls] = useAudio({ src: "/success.mp3" });
-    const [incorrectAudio, _i, incorrectControls] = useAudio({ src: "/success.mp3" });
+    const [incorrectAudio, _i, incorrectControls] = useAudio({ src: "/error.mp3" });
 
     const [lessonId] = useState(initialLessonId);
     const [hearts, setHearts] = useState(initialHearts);
